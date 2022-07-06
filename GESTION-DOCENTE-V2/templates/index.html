@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4">
+        {% with msj = get_flashed_messages() %}
+        {% if msj %}
+        {% for message in msj %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="card card-body">
+            <form action="/add_persona" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="cuil" placeholder="Ingrese su cuil" required>
+                </div>    
+                <div class="form-group">
+                    <input type="text" class="form-control" name="apellidos" placeholder="Ingrese su Apellido" required>
+                </div>    
+                <div class="form-group">
+                    <input type="text" class="form-control" name="nombres" placeholder="Ingrese sus Nombres" required>
+                </div>    
+                <div class="form-group">
+                    <label >Ingrese su fecha de nacimiento
+                    <input type="date" class="form-control" name="fechanac" placeholder="" required>
+                    </label>
+                </div>    
+                <div class="form-group">
+                    <input type="text" class="form-control" name="domicilio" placeholder="Ingrese su domicilio" required>
+                </div>    
+                <div class="form-group">
+                    <input type="text" class="form-control" name="ciudad" placeholder="Ingrese su ciudad" required>
+                </div>    
+                <div class="form-group">
+                    <input type="text" class="form-control" name="titulo" placeholder="Ingrese su titulo" required>
+                </div>    
+                <div class="form-group">
+                    <label>Ingrese su fecha del inicio docencia
+                    <input type="date" class="form-control" name="fechainicio" placeholder="" required>
+                </label>
+                </div>    
+                <div class="form-group">
+                    <input type="text" class="form-control" name="telefono" placeholder="Ingrese los telefonos de contacto" required>
+                </div>    
+                <div class="form-group">
+                    <input type="text" class="form-control" name="estado" placeholder="ingrese estado" >
+                </div>                             
+                <button type="submit" class="btn btn-primary btn-block form-control">Guardar</button>
+            </form>        
+        </div>
+    </div>
+    <div class="col-md-7 ">
+        <table class="table table-striped table-hover table-bordered table-sm bg-light">
+            <thead>
+                <tr>
+                    <td><strong>Cuil</strong></td>
+                    <td><strong>Apellidos</strong></td>
+                    <td><strong>Nombres</strong></td>
+                    <td><strong>Fecha Nacimiento</strong></td>
+                    <td><strong>Domicilio</strong></td>
+                    <td><strong>Ciudad</strong></td>
+                    <td><strong>Titulo</strong></td>
+                    <td><strong>Inicio docencia</strong></td>
+                    <td><strong>Telefonos</strong></td>
+                    <td><strong>Estado</strong></td>
+                    <td><strong>Operaciones</strong></td>
+            </thead>
+            <tbody>
+                {% for p in persona %}
+                <tr>
+                    <td>{{p.1}}</td>
+                    <td>{{p.2}}</td>
+                    <td>{{p.3}}</td>
+                    <td>{{p.4}}</td>
+                    <td>{{p.5}}</td>
+                    <td>{{p.6}}</td>
+                    <td>{{p.7}}</td>
+                    <td>{{p.8}}</td>
+                    <td>{{p.9}}</td>
+                    <td>{{p.10}}</td>
+                    <td>
+                        <a href="/edit_persona/{{p.0}}" class="btn btn-secondary form-control">Editar</a>
+                        <a href="/baja_persona/{{p.0}}" class="btn btn-danger form-control btn-disable">Inhabilitar</a>
+                    </td>
+        
+                </tr>
+            </tbody>
+                {% endfor %}
+        </table>    
+    </div>
+</div>
+
+{% endblock %}

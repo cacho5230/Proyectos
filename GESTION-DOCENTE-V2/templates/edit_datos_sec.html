@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="col-md-5 offset-md-4">
+    <div class="card card-body">
+        <form action="/update/{{p.0}}" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" name="cuil" placeholder="Ingrese su cuil" value="{{p.1}}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="apellidos" placeholder="Ingrese su Apellido" value="{{p.2}}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="nombres" placeholder="Ingrese sus Nombres" value="{{p.3}}">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="fechanac" placeholder="Ingrese su fecha de nacimiento" value="{{p.4}}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="domicilio" placeholder="Ingrese su domicilio" value="{{p.5}}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="ciudad" placeholder="Ingrese su ciudad" value="{{p.6}}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="titulo" placeholder="Ingrese su titulo" value="{{p.7}}">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="fechainicio" placeholder="Ingrese su fecha del inicio docencia" value="{{p.8}}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="telefono" placeholder="Ingrese los telefonos de contacto" value="{{p.9}}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="estado" placeholder="1 = Activo" value="{{p.10}}">
+            </div>                
+            <button type="submit" class="form-control btn btn-primary btn-block form-control">Guardar</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
